@@ -21,7 +21,7 @@ const Projects = () => {
           <Section>
             <ProjectGridItem
               id="pvx"
-              title="PuttViewX"
+              title="PuttView X"
               thumbnail={thumbPVX}
             >
               Augmented Reality Golf Training for the outdoors

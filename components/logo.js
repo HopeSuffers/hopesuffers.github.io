@@ -1,44 +1,58 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Text, useColorModeValue } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 
 const LogoBox = styled.span`
-font-weight: bold;
-font-size: 18px;
-display: inline-flex;
-align-items: center;
-height: 30px;
-line-height: 20px;
-padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  line-height: 20px;
+  padding: 10px;
+`
 
-&:hover img {
-  transform: rotate(20deg);
-}
+const LogoImageWrapper = styled.span`
+  display: inline-flex;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `
 
 const Logo = () => {
-  const footPrintImg = `/images/footprint${useColorModeValue('', '-dark')}.png`
+  const img = '/images/profile.jpeg'
 
   return (
-    <Link href="/">
+    <Link href="/" legacyBehavior>
       <a>
         <LogoBox>
-          <Image src={footPrintImg} width={20} height={20} alt="logo" />
-          
-          <Text 
-            color={useColorModeValue('gray.800', 'whiteAlpha.900')}
-            fontFamily='M PLUS Rounded 1c'
-            fontWeight='bold'
+          <LogoImageWrapper>
+            <Image src={img} width={24} height={24} alt="logo" />
+          </LogoImageWrapper>
+
+          <Text
+            fontFamily="M PLUS Rounded 1c"
             ml={3}
+            display="inline-flex"
+            gap={1}
+            color="brand.text"
           >
-            Filip Kajzer
+            <Text as="span" fontWeight="400">
+              Maurice
+            </Text>
+            <Text as="span" fontWeight="700">
+              Ach
+            </Text>
           </Text>
         </LogoBox>
       </a>
     </Link>
   )
-
 }
 
 export default Logo

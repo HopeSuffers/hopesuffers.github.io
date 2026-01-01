@@ -11,23 +11,24 @@ import {
   MenuItem,
   MenuList,
   MenuButton,
-  IconButton,
-  useColorModeValue,
+  IconButton
 } from '@chakra-ui/react'
-
 import { ExternalLinkIcon, HamburgerIcon } from '@chakra-ui/icons'
-import ThemeToggleButton from './theme-toggle-button'
 
 const LinkItem = ({ href, path, children }) => {
   const active = path === href
-  const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
 
   return (
-    <NextLink href={href}>
+    <NextLink href={href} passHref>
       <Link
-        pg={2}
-        bg={active ? 'glassTeal' : undefined}
-        color={active ? '#202023' : inactiveColor}
+        px={3}
+        py={1}
+        fontWeight="medium"
+        lineHeight="1.2"
+        bg={active ? 'brand.teal' : 'transparent'}
+        color={active ? 'brand.crust' : 'brand.text'}
+        borderRadius="md"
+        _hover={{ textDecoration: 'none', bg: 'brand.surface1' }}
       >
         {children}
       </Link>
@@ -35,59 +36,58 @@ const LinkItem = ({ href, path, children }) => {
   )
 }
 
-const Navbar = props => {
-  const { path } = props
-
+const Navbar = ({ path }) => {
   return (
     <Box
-      position="fixed"
       as="nav"
+      position="fixed"
       w="100%"
-      bg={useColorModeValue('#ffffff40', '#20202380')}
-      style={{ backdropFilter: 'blur(10px)' }}
+      bg="rgba(30, 32, 48, 0.8)"
+      style={{ backdropFilter: 'blur(12px)' }}
       zIndex={1}
-      {...props}
     >
-      <Container
-        display="flex"
-        p={2}
-        maxW="container.md"
-        wrap="wrap"
-        align="center"
-        justify="space-between"
-      >
-        <Flex align="center" mr={5}>
-          <Heading
-            as="h1"
-            size="lg"
-            fontWeight="normal"
-            letterSpacing={'tighter'}
-          >
-            <Logo />
-          </Heading>
-        </Flex>
-        <Stack
-          direction={{ base: 'column', md: 'row' }}
-          display={{ base: 'none', md: 'flex' }}
-          width={{ base: 'full', md: 'auto' }}
-          alignItems="center"
-          flexGrow={1}
-          mt={{ base: 4, md: 0 }}
-        >
-          <LinkItem path={path} href="/projects">
-            Projects
-          </LinkItem>
-        </Stack>
+      <Container maxW="container.md" py={2}>
+        <Flex align="center" position="relative">
+          {/* Logo — left */}
+          <Flex align="center">
+            <Heading
+              as="h1"
+              size="lg"
+              fontWeight="normal"
+              letterSpacing="tighter"
+              lineHeight="1"
+              m={0}
+            >
+              <Logo />
+            </Heading>
+          </Flex>
 
-        <Box flex={1} align="right">
-          <ThemeToggleButton />
-          <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
+          {/* Centered desktop nav */}
+          <Flex
+            position="absolute"
+            left="50%"
+            transform="translateX(-50%)"
+            align="center"
+            display={{ base: 'none', md: 'flex' }}
+          >
+            <Stack direction="row" spacing={6} align="center">
+              <LinkItem path={path} href="/">
+                About
+              </LinkItem>
+              <LinkItem path={path} href="/projects">
+                Projects
+              </LinkItem>
+            </Stack>
+          </Flex>
+
+          {/* Mobile menu — right */}
+          <Box ml="auto" display={{ base: 'block', md: 'none' }}>
             <Menu>
               <MenuButton
                 as={IconButton}
                 icon={<HamburgerIcon />}
-                variant="outline"
-                aria-label="Options"
+                variant="ghost"
+                aria-label="Menu"
               />
               <MenuList>
                 <NextLink href="/" passHref>
@@ -96,13 +96,16 @@ const Navbar = props => {
                 <NextLink href="/projects" passHref>
                   <MenuItem as={Link}>Projects</MenuItem>
                 </NextLink>
-                <Link href="https://github.com/kijz/kijz.github.io">
-                  <MenuItem>View Source&nbsp;<ExternalLinkIcon /></MenuItem>
+                <Link href="https://github.com/kijz/kijz.github.io" isExternal>
+                  <MenuItem>
+                    View Source&nbsp;
+                    <ExternalLinkIcon />
+                  </MenuItem>
                 </Link>
               </MenuList>
             </Menu>
           </Box>
-        </Box>
+        </Flex>
       </Container>
     </Box>
   )
