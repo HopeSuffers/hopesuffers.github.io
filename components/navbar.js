@@ -96,7 +96,7 @@ const Navbar = ({ path }) => {
                 <NextLink href="/projects" passHref>
                   <MenuItem as={Link}>Projects</MenuItem>
                 </NextLink>
-                <Link href="https://github.com/kijz/kijz.github.io" isExternal>
+                <Link href="https://github.com/hopesuffers/hopesuffers.github.io" isExternal>
                   <MenuItem>
                     View Source&nbsp;
                     <ExternalLinkIcon />

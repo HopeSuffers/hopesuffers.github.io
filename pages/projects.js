@@ -1,13 +1,16 @@
-import { Container, Divider, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
 
-import { ProjectGridItem } from "../components/grid-item";
-import Section from "../components/section";
-import Layout from "../components/layouts/article";
+import { ProjectGridItem } from '../components/grid-item'
+import Section from '../components/section'
+import Layout from '../components/layouts/article'
 
-import thumbOperatingTheatre from "../public/images/projects/virtual_operating_theatre_01.png";
-import thumbMesh from "../public/images/projects/mesh_cut_01.png";
-import thumbZombie from "../public/images/projects/zombie_01.png";
-import thumbPVX from "../public/images/projects/pvx-showcase.jpg";
+import thumbPVX from '../public/images/projects/pvx-showcase.jpg'
+import thumbUEFA from '../public/images/projects/UEFA_Champions_League.svg.png'
+import thumbRtxON from '../public/images/projects/rtxON.png'
+import thumbInOneWeekend from '../public/images/projects/in_one_weekend.png'
+import thumbForay from '../public/images/projects/foray.png'
+import thumbGaussianBlur from '../public/images/projects/gaussian_blur.png'
+
 
 const Projects = () => {
   return (
@@ -17,45 +20,60 @@ const Projects = () => {
           Projects
         </Heading>
 
-        <SimpleGrid colums={[1, 1, 2]} gap={6}>
+        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          <Section>
+            <ProjectGridItem id="pvx" title="PuttView X" thumbnail={thumbPVX}>
+              Augmented Reality Golf Training for the outdoors.
+            </ProjectGridItem>
+          </Section>
+
           <Section>
             <ProjectGridItem
-              id="pvx"
-              title="PuttView X"
-              thumbnail={thumbPVX}
+              id="uefa-away-goals-rule"
+              title="UEFA Away Goals Rule"
+              thumbnail={thumbUEFA}
             >
-              Augmented Reality Golf Training for the outdoors
+              Data analysis of UEFA Champions League knockout matches and the
+              historical impact of the away goals rule.
             </ProjectGridItem>
-            <Divider mt={4} mb={6} />
-            <ProjectGridItem
-              id="virtual-operating-theatre"
-              title="Virtual Operating Theatre"
-              thumbnail={thumbOperatingTheatre}
-            >
-              Pre-operative Planning in Virtual Reality with Head Mounted
-              Displays for Oral and Maxillofacial Surgery.
+          </Section>
+
+          <Section>
+            <ProjectGridItem id="rtxON" title="rtxON" thumbnail={thumbRtxON}>
+              Simple Vulkan ray tracing tutorials (forked &amp; extended).
             </ProjectGridItem>
-            <Divider mt={4} mb={6} />
+          </Section>
+
+          <Section>
             <ProjectGridItem
-              id="mesh-cut"
-              title="MeshCut VR"
-              thumbnail={thumbMesh}
+              id="gaussian-blur"
+              title="Gaussian Blur (CUDA)"
+              thumbnail={thumbGaussianBlur}
             >
-              Realistic cutting of object via mesh manipulation.
+              GPU-accelerated Gaussian blur for images implemented in CUDA.
             </ProjectGridItem>
-            <Divider mt={4} mb={6} />
+          </Section>
+
+          <Section>
             <ProjectGridItem
-              id="zombie-shooter"
-              title="Zombies VR"
-              thumbnail={thumbZombie}
+              id="inOneWeekend"
+              title="inOneWeekend"
+              thumbnail={thumbInOneWeekend}
             >
-              Dark and gloomy zombie shooter.
+              Multi-threaded “Ray Tracing in One Weekend” C++ path tracer.
+            </ProjectGridItem>
+          </Section>
+
+          <Section>
+            <ProjectGridItem id="foray" title="Foray" thumbnail={thumbForay}>
+              Rapid prototyping framework for cross-platform Vulkan hardware ray
+              tracing demos.
             </ProjectGridItem>
           </Section>
         </SimpleGrid>
       </Container>
     </Layout>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

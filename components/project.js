@@ -4,17 +4,6 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 
 export const Title = ({ children }) => (
   <>
-    <Box>
-      <NextLink href="/projects">
-        <Link>Projects</Link>
-      </NextLink>
-    </Box>
-
-    <span>
-      &nbsp;
-      <ChevronRightIcon />
-      &nbsp;
-    </span>
     <Heading display="inline-block" as="h3" fontSize={20} mb={4}>
       {children}
     </Heading>
