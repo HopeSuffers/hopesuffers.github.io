@@ -1,24 +1,20 @@
-import NextLink from "next/link";
-import { AspectRatio, Badge, Box, Heading, Image, Link } from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { AspectRatio, Badge, Heading, Image } from '@chakra-ui/react'
 
 export const Title = ({ children }) => (
-  <>
-    <Heading display="inline-block" as="h3" fontSize={20} mb={4}>
-      {children}
-    </Heading>
-  </>
-);
+  <Heading display="inline-block" as="h3" fontSize={20} mb={4}>
+    {children}
+  </Heading>
+)
 
 export const ProjectImage = ({ src, alt }) => (
   <Image borderRadius="lg" w="full" src={src} alt={alt} mb={4} />
-);
+)
 
 export const Meta = ({ children }) => (
   <Badge colorScheme="green" mr={2}>
     {children}
   </Badge>
-);
+)
 
 export const ProjectYoutube = ({ embedId }) => (
   <AspectRatio borderRadius="lg" maxW="full" ratio={1}>
@@ -28,4 +24,4 @@ export const ProjectYoutube = ({ embedId }) => (
       allowFullScreen
     />
   </AspectRatio>
-);
+)
